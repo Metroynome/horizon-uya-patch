@@ -95,7 +95,6 @@ void onOnlineMenu(void)
 	lastMenuInvokedTime = gameGetTime();
 	if (!hasInitialized)
 	{
-		printf("onOnlinemenu - pad enable input\n");
 		padEnableInput();
 		// onConfigInitialize();
 		hasInitialized = 1;
@@ -126,19 +125,16 @@ void onOnlineMenu(void)
  */
 int main(void)
 {
-	//printf("begining of main\n");
 	// Call this first
 	uyaPreUpdate();
 
 	// auto enable pad input to prevent freezing when popup shows
 	if (lastMenuInvokedTime > 0 && gameGetTime() - lastMenuInvokedTime > TIME_SECOND)
 	{
-		//printf("pad enable input\n");
 		padEnableInput();
 		lastMenuInvokedTime = 0;
 	}
 
-	// void * GameplayFilePointer = (void*)(*(u32*)0x01FFFD00);
 	if(gameIsIn())
 	{
 		// In game stuff
@@ -159,7 +155,6 @@ int main(void)
 
 	// Call this last
 
-	//printf("uyaPostUpdate\n");
 	uyaPostUpdate();
 
 	return 0;
